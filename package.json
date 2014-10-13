@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A simple web app that sends a text message about real-time BART schedule",
   "author": "Ryo Osawa",
-  "main": "index.js",
+  "main": "app.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/ryojiosawa/bart-schedule-reminder.git"
