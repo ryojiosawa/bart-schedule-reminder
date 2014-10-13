@@ -1,0 +1,9 @@
+{
+  "name": "bart-schedule-reminder",
+  "version": "0.0.1",
+  "homepage": "https://github.com/ryojiosawa/bart-schedule-reminder",
+  "description": "A simple web app that sends a text message about real-time BART train schedule",
+  "authors": [
+    "Ryo Osawa <ryojiosawa@gmail.com>"
+  ]
+}

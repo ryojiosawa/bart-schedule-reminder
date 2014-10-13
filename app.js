@@ -1,3 +1,6 @@
 var twilio = require('./lib/twilio');
+var bart = require('./lib/bart');
 
-twilio.sendText('415-724-9329', '10');
+bart.getDepartureInfo('powl', 'n');
+
+//twilio.sendText('415-724-9329');
