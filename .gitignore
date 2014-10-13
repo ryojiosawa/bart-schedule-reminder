@@ -1,1 +1,24 @@
-.idea/
+.DS_Store
+.AppleDouble
+.LSOverride
+iisnode.yml
+
+# Icon must ends with two \r.
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+node_modules/
+bower_components/
+
+# Floobits
+.floo
+.floobit
+.floo
+.flooignore
+
+.idea/*

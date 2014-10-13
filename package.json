@@ -1,0 +1,20 @@
+{
+  "name": "bart-schedule-reminder",
+  "version": "0.0.1",
+  "description": "A simple web app that sends a text message about real-time BART schedule",
+  "author": "Ryo Osawa",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryojiosawa/bart-schedule-reminder.git"
+  },
+  "dependencies": {
+    "bluebird": "^2.3.5",
+    "request": "^2.45.0",
+    "twilio": "^1.7.0",
+    "xml2js": "^0.4.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
