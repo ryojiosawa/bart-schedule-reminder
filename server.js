@@ -8,7 +8,6 @@ bart.fetchDepartureInfo('powl', 'n', 'RICH', function(estimates) {
 
 */
 var app = require('./server/server-config.js');
-require('./server/db-config.js');
 
 var port = process.env.PORT || 8000;
 app.listen(port);
