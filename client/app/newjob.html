@@ -1,9 +1,47 @@
 <div id='container'>
-  <form name="newJobForm" ng-submit='addJob()'>
-    <input class='text' type='text' name='phone'
-           ng-model="job.phone"
-           ng-required="true"
-           required novalidate>
-    <button type='submit'>Save</button>
+  <form class="form-horizontal" name="newJobForm" ng-submit='addJob()'>
+    <div class="form-group">
+      <label for="phone" class="col-sm-2 control-label">Phone Number</label>
+      <div class="col-sm-3">
+        <input id="phone" class='form-control' type='text' placeholder="Enter phone number"
+               ng-model="job.phone" ng-required="true" required novalidate>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="station" class="col-sm-2 control-label">Station</label>
+      <div class="col-sm-3">
+        <select id="station" ng-model="job.station" class='form-control'
+                ng-options="station.name for station in stations"
+                ng-required="true" required novalidate>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="destination" class="col-sm-2 control-label">Destination</label>
+      <div class="col-sm-3">
+        <select id="destination" class='form-control' ng-model="job.destination" ng-required="true" required novalidate>
+          <option value="frmt">Fremont</option>
+          <option value="mlbr">Millbrae</option>
+          <option value="sfia">San Francisco Int'l Airport</option>
+          <option value="rich">Richmond</option>
+          <option value="pitt">Pittsburg/Bay Point</option>
+          <option value="dubl">Dublin/Pleasanton</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="direction" class="col-sm-2 control-label">Direction</label>
+      <div class="col-sm-3">
+        <select id="direction" class='form-control' ng-model="job.direction" ng-required="true" required novalidate>
+          <option selected value="n">Northbound</option>
+          <option value="s">Southbound</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type='submit' class="btn btn-primary">Save</button>
+      </div>
+    </div>
   </form>
 </div>
