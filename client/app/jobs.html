@@ -1,0 +1,18 @@
+<div id='container'>
+  <table class='table'>
+    <ul>
+      <tr>
+        <th>Phone Number</th>
+        <th>Station</th>
+        <th>Destination</th>
+        <th>Direction</th>
+      </tr>
+      <tr ng-repeat="job in jobs">
+        <td>{{ job.phone }}</td>
+        <td>{{ job.station }}</td>
+        <td>{{ job.destination }}</td>
+        <td>{{ job.direction }}</td>
+      </tr>
+    </ul>
+  </table>
+</div>

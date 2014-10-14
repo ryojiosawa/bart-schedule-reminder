@@ -1,13 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='bart-schedule-reminder'>
 <head>
   <meta charset="utf-8"/>
   <title>Bart Scheduler Reminder</title>
-  <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="bootstrap.min.css"/>
 </head>
 <body>
-<div id='container'>
-  <h1>Bart Scheduler Reminder</h1>
-</div>
+  <div id='container' class="container-fluid">
+    <h1>Bart Scheduler Reminder</h1>
+    <button type="link" class="btn btn-default">Create New Schedule</button>
+
+    <div ng-view></div>
+  </div>
+
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-route/angular-route.js"></script>
+
+  <script src="app/jobs.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
