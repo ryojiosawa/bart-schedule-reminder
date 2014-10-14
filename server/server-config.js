@@ -14,7 +14,7 @@ app.use(morgan('dev'));
 app.use(partials());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/../../client'));
+app.use(express.static(__dirname + '/../client'));
 /*app.use(express.cookieParser('shhhh, very secret'));
 app.use(express.session());*/
 
