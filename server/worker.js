@@ -9,8 +9,9 @@ JobCtrl.fetchJobs(function(jobs) {
 
     bart.fetchDepartureInfo(job.station, job.direction, job.destination, function (estimates) {
       console.log('estimates', estimates);
-      twilio.sendText(job.phone, job.destination, estimates);
+      twilio.sendText(job.phone, job.destination, estimates, function() {
+        process.exit(0);
+      });
     });
   });
 });
-
