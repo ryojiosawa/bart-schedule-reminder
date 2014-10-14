@@ -10,9 +10,9 @@
       </tr>
       <tr ng-repeat="job in data.jobs">
         <td>{{ job.phone }}</td>
-        <td>{{ job.station }}</td>
-        <td>{{ job.destination }}</td>
-        <td>{{ job.direction }}</td>
+        <td>{{ job.station | displayStation }}</td>
+        <td>{{ job.destination | displayStation }}</td>
+        <td>{{ job.direction | displayDirection }}</td>
       </tr>
     </ul>
   </table>

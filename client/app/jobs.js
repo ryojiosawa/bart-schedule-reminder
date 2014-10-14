@@ -6,7 +6,6 @@ angular.module('bart-schedule-reminder.jobs', [])
       JobService.getJobs()
         .then(function(jobs) {
           $scope.data.jobs = jobs;
-          //$location.path('/links');
         })
         .catch(function (error) {
           console.error(error);
@@ -14,4 +13,12 @@ angular.module('bart-schedule-reminder.jobs', [])
     };
 
     $scope.getJobs();
+  }).filter('displayStation', function(JobService) {
+    return function(abbr) {
+      return JobService.getStationWithAbbr(abbr);
+    };
+  }).filter('displayDirection', function(JobService) {
+    return function(direction) {
+      return JobService.getDirection(direction);
+    };
   });
