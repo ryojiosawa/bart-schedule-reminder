@@ -15,6 +15,6 @@ angular.module('bart-schedule-reminder', [
         controller: 'NewJobController'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/jobs'
       });
   });
