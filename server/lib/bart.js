@@ -29,12 +29,13 @@ var fetchDepartureInfo = function(orig, dir, dest, cb) {
         .then(function(json) {
 
           var estimates = _.filter(json.root.station[0].etd, function(estimate) {
-            if (estimate.abbreviation[0] === dest) {
+            if (estimate.abbreviation[0] === dest.toUpperCase()) {
               return estimate.estimate;
             }
-          })[0].estimate;
+          });
 
-          if (estimates) {
+          if (estimates && estimates[0] && estimates[0].estimate) {
+            estimates = estimates[0].estimate;
             var minutes = _.map(estimates, function(estimate) {
               return estimate.minutes[0];
             });

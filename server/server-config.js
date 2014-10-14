@@ -18,11 +18,10 @@ app.use(express.static(__dirname + '/../client'));
 /*app.use(express.cookieParser('shhhh, very secret'));
 app.use(express.session());*/
 
-app.get('/', function(req, res) {
-  res.end('hello!');
-});
-
 app.get('/jobs', handler.getJobs);
 app.post('/jobs', handler.saveJob);
+app.delete('/jobs/:id', handler.deleteJob);
+
+app.get('/', handler.getJobs);
 
 module.exports = app;
