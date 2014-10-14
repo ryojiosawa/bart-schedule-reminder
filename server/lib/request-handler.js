@@ -2,9 +2,10 @@ var db = require('../db-config');
 var Job = require('../jobs/jobModel');
 
 exports.saveJob = function(req, res) {
+
   var job = new Job({
     phone: req.body.phone,
-    station: req.body.station,
+    station: req.body.station.abbr,
     destination: req.body.destination,
     direction: req.body.direction
   });

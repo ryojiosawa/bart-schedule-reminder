@@ -1,6 +1,6 @@
 angular.module('bart-schedule-reminder.services', [])
 
-  .factory('JobService', function ($http) {
+  .factory('JobService', function ($http, $location) {
     var getJobs = function() {
       return $http({
         method: 'GET',
