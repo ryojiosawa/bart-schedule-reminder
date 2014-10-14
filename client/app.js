@@ -1,5 +1,7 @@
 angular.module('bart-schedule-reminder', [
   'bart-schedule-reminder.jobs',
+  'bart-schedule-reminder.newjob',
+  'bart-schedule-reminder.services',
   'ngRoute'
   ])
   .config(function($routeProvider, $httpProvider) {
@@ -8,7 +10,11 @@ angular.module('bart-schedule-reminder', [
         templateUrl: 'app/jobs.html',
         controller: 'JobsController'
       })
+      .when('/newjob', {
+        templateUrl: 'app/newjob.html',
+        controller: 'NewJobController'
+      })
       .otherwise({
-        redirectTo: '/jobs'
+        redirectTo: '/'
       });
   });

@@ -22,6 +22,7 @@ app.get('/', function(req, res) {
   res.end('hello!');
 });
 
+app.get('/jobs', handler.getJobs);
 app.post('/jobs', handler.saveJob);
 
 module.exports = app;

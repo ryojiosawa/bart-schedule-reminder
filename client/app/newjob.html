@@ -1,0 +1,9 @@
+<div id='container'>
+  <form name="newJobForm" ng-submit='addJob()'>
+    <input class='text' type='text' name='phone'
+           ng-model="job.phone"
+           ng-required="true"
+           required novalidate>
+    <button type='submit'>Save</button>
+  </form>
+</div>

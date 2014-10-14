@@ -1,7 +1,17 @@
 angular.module('bart-schedule-reminder.jobs', [])
-  .controller('JobsController', function($scope) {
-    $scope.jobs = [
-      {phone: '111-111-1111'},
-      {phone: '222-222-2222'}
-    ];
+  .controller('JobsController', function($scope, $location, JobService) {
+    $scope.data = {};
+
+    $scope.getJobs = function() {
+      JobService.getJobs()
+        .then(function(jobs) {
+          $scope.data.jobs = jobs;
+          //$location.path('/links');
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    };
+
+    $scope.getJobs();
   });
