@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-mongoURI = process.env.MONGO_URI || 'mongodb://localhost/bart-schedule-reminder';
+mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost/bart-schedule-reminder';
 mongoose.connect(mongoURI);
 
 // Run in seperate terminal window using 'mongod'
