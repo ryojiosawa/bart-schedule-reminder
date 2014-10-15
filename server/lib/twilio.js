@@ -6,7 +6,7 @@ var from = process.env.PHONE;
 //require the Twilio module and create a REST client
 var client = require('twilio')(accountSid, authToken);
 
-exports.sendText = function(to, dest, minutes) {
+exports.sendText = function(to, dest, minutes, done) {
 
   minutes = _.map(minutes, function(minute) {
     return minute === 'Leaving' ? 'now' : minute;
@@ -25,5 +25,6 @@ exports.sendText = function(to, dest, minutes) {
 
   client.messages.create(message, function(err, message) {
     console.log(message.sid);
+    done();
   });
 };
