@@ -24,7 +24,11 @@ exports.sendText = function(to, dest, minutes, done) {
   };
 
   client.messages.create(message, function(err, message) {
-    console.log(message.sid);
+    if (err) {
+      console.error(err);
+    } else {
+      console.log(message.sid);
+    }
     done();
   });
 };
