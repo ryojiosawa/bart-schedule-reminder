@@ -1,12 +1,11 @@
 'use strict';
 
-var gulp    = require('gulp'),
-  nodemon   = require('gulp-nodemon'),
-  bs        = require('browser-sync'),
-  reload    = bs.reload,
-  when      = require('gulp-if'),
-  shell     = require('gulp-shell');
-
+var gulp = require('gulp');
+var nodemon = require('gulp-nodemon');
+var bs = require('browser-sync');
+var reload = bs.reload;
+var when = require('gulp-if');
+var shell = require('gulp-shell');
 
 // the paths to our app files
 var paths = {
@@ -36,8 +35,7 @@ gulp.task('karma', shell.task([
 
 // start our node server using nodemon
 gulp.task('serve', function() {
-  nodemon({script: 'index.js', ignore: 'node_modules/**/*.js'});
+  nodemon({script: 'server.js', ignore: 'node_modules/**/*.js'});
 });
 
 gulp.task('default', ['start']);
-
