@@ -1,4 +1,4 @@
-var handler = require('../lib/request-handler');
+var handler = require('./job-controller');
 
 module.exports = function (app) {
   app.route('/')
