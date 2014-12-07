@@ -11,10 +11,10 @@ module.exports = {
 
     job.save(function(err, newJob) {
       if (err) {
-        next(err);
+        return next(err);
       }
 
-      res.send(200, newJob);
+      res.status(201).send(newJob);
     });
   },
 
@@ -25,7 +25,7 @@ module.exports = {
           next(err);
         }
 
-        res.send(200, jobs);
+        res.status(200).send(jobs);
       });
   },
 
@@ -36,7 +36,7 @@ module.exports = {
           next(err);
         }
 
-        res.send(200, { message: 'Successfully deleted' });
+        res.status(200).send({ message: 'Successfully deleted' });
       });
   },
 
