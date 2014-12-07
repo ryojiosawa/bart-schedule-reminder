@@ -4,24 +4,18 @@ var bodyParser = require('body-parser');
 var partials = require('express-partials');
 var handler = require('./lib/request-handler');
 
-var app = express();
+module.exports = function (app, express) {
+  app.use(morgan('dev'));
+  app.use(partials());
+  app.use(bodyParser.urlencoded({extended: true}));
+  app.use(bodyParser.json());
+  app.use(express.static(__dirname + '/../client'));
+  /*app.use(express.cookieParser('shhhh, very secret'));
+   app.use(express.session());*/
 
-// Express 4 allows us to use multiple routers with their own configurations
-/*  var userRouter = express.Router();
-  var linkRouter = express.Router();*/
+  var jobRouter = express.Router();
+  require('./jobs/job-routes.js')(jobRouter);
+  app.use('/jobs', jobRouter);
 
-app.use(morgan('dev'));
-app.use(partials());
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
-app.use(express.static(__dirname + '/../client'));
-/*app.use(express.cookieParser('shhhh, very secret'));
-app.use(express.session());*/
-
-app.get('/jobs', handler.getJobs);
-app.post('/jobs', handler.saveJob);
-app.delete('/jobs/:id', handler.deleteJob);
-
-app.get('/', handler.getJobs);
-
-module.exports = app;
+  app.get('/', handler.getJobs);
+};
