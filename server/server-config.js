@@ -13,6 +13,10 @@ module.exports = function (app, express) {
   /*app.use(express.cookieParser('shhhh, very secret'));
    app.use(express.session());*/
 
+  // Error handling middleware
+  app.use(handler.errorLogger);
+  app.use(handler.errorHandler);
+
   var jobRouter = express.Router();
   require('./jobs/job-routes.js')(jobRouter);
   app.use('/jobs', jobRouter);
