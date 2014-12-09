@@ -28,7 +28,7 @@ describe('Job Test Suite', function() {
     it('should insert a new job', function(done) {
       request(app)
         .post('/jobs')
-        .send({ phone: "123-456-789", station: "powl", destination: "rich", direction: "n" })
+        .send({ phone: "123-456-789", station: {abbr: "powl"}, destination: "rich", direction: "n" })
         .expect(201)
         .end(function(err, res) {
           if (err) throw err;

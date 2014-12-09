@@ -1,7 +1,5 @@
 angular.module('bart-schedule-reminder.services', [])
-
   .factory('JobService', function ($http, $location) {
-
     var stations = stations = [
       {abbr: '12th', name: '12th St. Oakland City Center'},
       {abbr: '16th', name: '16th St. Mission (SF)'},
@@ -69,7 +67,7 @@ angular.module('bart-schedule-reminder.services', [])
 
     var getDirection = function(direction) {
       return direction === 'n' ? 'Northbound': 'Southbound';
-    }
+    };
 
     return {
       getJobs: getJobs,

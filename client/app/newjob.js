@@ -1,5 +1,4 @@
 angular.module('bart-schedule-reminder.newjob', [])
-
   .controller('NewJobController', function ($scope, $location, JobService) {
     $scope.job = {};
 
