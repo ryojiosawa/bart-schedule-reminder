@@ -73,37 +73,17 @@ describe('Job Test Suite', function() {
     });
   });
 
-  xdescribe('GET: /jobs/:job_id', function() {
-    it('should return a single case', function(done) {
-      db.ReportedCase.create({
-        disease_id: disease_id,
-        latitude: 12.345,
-        longitude: 23.456,
-        date: Date.now(),
-        description: "Ebola is bad"
-      }).then(function(created) {
-        request(app)
-          .get('/api/cases/' + created.id)
-          .expect(200)
-          .end(function(err, res) {
-            expect(res.body.latitude).to.equal(12.345);
-            done();
-          });
+  it('GET: /jobs/:job_id should return correct error message', function(done) {
+    request(app)
+      .get('/jobs/1')
+      .expect(405)
+      .end(function(err, res) {
+        expect(res.body.message).to.equal("Method not allowed");
+        done();
       });
-    });
-
-    it('should respond an empty result if not exist', function(done) {
-      request(app)
-        .get('/api/cases/' + 3000)
-        .expect(200)
-        .end(function(err, res) {
-          expect(res.body).to.deep.equal({});
-          done();
-        });
-    });
   });
 
-  it.only('DELETE: /jobs/job_id should delete a specified job', function(done) {
+  it('DELETE: /jobs/job_id should delete a specified job', function(done) {
     Job.create({ phone: "123-456-789", station: "powl", destination: "rich", direction: "n" })
       .then(function(res) {
 
