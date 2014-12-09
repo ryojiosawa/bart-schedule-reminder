@@ -4,7 +4,7 @@ module.exports = {
   createJob: function(req, res, next) {
     var job = new Job({
       phone: req.body.phone,
-      station: req.body.station.abbr,
+      station: req.body.station,
       destination: req.body.destination,
       direction: req.body.direction
     });

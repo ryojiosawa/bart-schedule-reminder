@@ -13,6 +13,7 @@
         <select id="station" ng-model="job.station" class='form-control'
                 ng-options="station.name for station in stations"
                 ng-required="true" required novalidate>
+          <option value="">-- Choose station --</option>
         </select>
       </div>
     </div>
@@ -20,6 +21,7 @@
       <label for="destination" class="col-sm-2 control-label">Destination</label>
       <div class="col-sm-3">
         <select id="destination" class='form-control' ng-model="job.destination" ng-required="true" required novalidate>
+          <option value="">-- Choose destination --</option>
           <option value="frmt">Fremont</option>
           <option value="mlbr">Millbrae</option>
           <option value="sfia">San Francisco Int'l Airport</option>
@@ -33,7 +35,8 @@
       <label for="direction" class="col-sm-2 control-label">Direction</label>
       <div class="col-sm-3">
         <select id="direction" class='form-control' ng-model="job.direction" ng-required="true" required novalidate>
-          <option selected value="n">Northbound</option>
+          <option value="">-- Choose direction --</option>
+          <option value="n">Northbound</option>
           <option value="s">Southbound</option>
         </select>
       </div>

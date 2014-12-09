@@ -44,7 +44,12 @@ angular.module('bart-schedule-reminder.services', [])
       return $http({
         method: 'POST',
         url: '/jobs',
-        data: job
+        data: {
+          phone: job.phone,
+          station: job.station && job.station.abbr,
+          destination: job.destination,
+          direction: job.direction
+        }
       })
       .then(function (resp) {
         $location.path('/jobs');
