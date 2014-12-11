@@ -2,7 +2,7 @@ var request = require('supertest');
 var expect = require('chai').expect;
 var bart = require('../../server/lib/bart');
 
-describe('bart.fetchDepartureInfo', function(done) {
+xdescribe('bart.fetchDepartureInfo', function(done) {
 
   it('should return real-time departure time for a given station', function(){
     var job = {
