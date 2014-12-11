@@ -40,12 +40,7 @@ module.exports = {
       });
   },
 
-  fetchJobs: function (cb) {
-    Job.find()
-      .exec(function(err, jobs) {
-        if (err) throw err;
-
-        cb(jobs);
-      });
+  fetchJobs: function() {
+    return Job.find({}).exec();
   }
 };
