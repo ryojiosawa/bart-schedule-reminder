@@ -73,14 +73,42 @@ describe('Job Test Suite', function() {
     });
   });
 
-  it('GET: /jobs/:job_id should return correct error message', function(done) {
-    request(app)
-      .get('/jobs/1')
-      .expect(405)
-      .end(function(err, res) {
-        expect(res.body.message).to.equal("Method not allowed");
-        done();
-      });
+  describe('GET: /jobs/:job_id & POST: /jobs/:job_id', function() {
+    var job_id = null;
+    beforeEach(function(done) {
+      Job.create({ phone: "123-456-789", station: "powl", destination: "rich", direction: "n" })
+        .then(function(job) {
+          job_id = job._id;
+          done();
+        });
+    });
+
+    it('GET: /jobs/:job_id should return a single job', function(done) {
+      request(app)
+        .get('/jobs/' + job_id)
+        .expect(200)
+        .end(function(err, res) {
+          expect(res.body.phone).to.be.equal("123-456-789");
+          expect(res.body.station).to.be.equal("powl");
+          expect(res.body.destination).to.be.equal("rich");
+          expect(res.body.direction).to.be.equal("n");
+          done();
+        });
+    });
+
+    it('POST: /jobs/:job_id should update the existing job', function(done) {
+      request(app)
+        .post('/jobs/' + job_id)
+        .send({ phone: "456-789-123", station: "glen", destination: "sfia" })
+        .expect(200)
+        .end(function(err, res) {
+          expect(res.body.phone).to.be.equal("456-789-123");
+          expect(res.body.station).to.be.equal("glen");
+          expect(res.body.destination).to.be.equal("sfia");
+          expect(res.body.direction).to.be.equal("n");
+          done();
+        });
+    });
   });
 
   it('DELETE: /jobs/job_id should delete a specified job', function(done) {
