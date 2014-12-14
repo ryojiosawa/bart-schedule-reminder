@@ -8,10 +8,16 @@ var client = require('twilio')(accountSid, authToken);
 
 exports.sendText = function(job, minutes) {
 
-  var body = 'Your train (' + helper.getStationName(job.destination) + ') ' +
-        'is arriving at ' + helper.getStationName(job.station) +
-        ' station in ' +
-        minutes.join(', ') + ' minutes.';
+  var body;
+  if (minutes) {
+    body = 'Your train (' + helper.getStationName(job.destination) + ') ' +
+      'is arriving at ' + helper.getStationName(job.station) +
+      ' station in ' +
+      minutes.join(', ') + ' minutes.';
+  } else {
+    body = 'Your train (' + helper.getStationName(job.destination) + ') ' +
+    'is not arriving at ' + helper.getStationName(job.station) + ' station in next hour ';
+  }
 
   var message = { to: job.phone, from: from, body: body };
   return client.messages.create(message)
