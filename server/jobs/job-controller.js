@@ -18,6 +18,27 @@ module.exports = {
     });
   },
 
+  updateJob: function(req, res, next) {
+    Job.findOneAndUpdate({ _id: req.params.id }, req.body, { upsert: true })
+      .exec()
+      .then(function(job) {
+        res.status(200).send(job);
+      }, function(err) {
+        return next(err);
+      }
+    );
+  },
+
+  getJob: function(req, res, next) {
+    Job.findOne({ _id: req.params.id })
+      .exec()
+      .then(function(job) {
+        res.status(200).send(job);
+      }, function(err) {
+        next(err);
+      });
+  },
+
   getJobs: function(req, res, next) {
     Job.find()
       .exec(function(err, jobs) {
