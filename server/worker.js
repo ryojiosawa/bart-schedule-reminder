@@ -14,12 +14,15 @@ fetchJobs()
           twilio.sendText(job, estimates)
             .then(function(message) {
               console.log(message.sid);
-              // TODO: Call process.exit(0) after all jobs are executed for async
               done();
             }, function(err) {
               done(err);
             });
       });
+    }, function(err) {
+      if (err) { console.log(err); }
+
+      process.exit(0);  // ensure to terminate the process when an error occurs
     });
   }, function(err) {
     console.log(err);
