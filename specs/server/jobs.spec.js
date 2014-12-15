@@ -17,7 +17,7 @@ describe('Job Test Suite', function() {
     xit('should return an error message upon invalid request', function(done) {
       request(app)
         .post('/jobs')
-        .send({ phone: "123-456-789", destination: "rich", direction: "n" })
+        .send({ phone: "123-456-789", direction: "n" })
         .expect(500)
         .end(function(err, res) {
           expect(res.text).to.include('ValidationError');
@@ -28,7 +28,7 @@ describe('Job Test Suite', function() {
     it('should insert a new job', function(done) {
       request(app)
         .post('/jobs')
-        .send({ phone: "123-456-789", station: "powl", destination: "rich", direction: "n" })
+        .send({ phone: "123-456-789", station: "powl", direction: "n" })
         .expect(201)
         .end(function(err, res) {
           if (err) throw err;
@@ -51,8 +51,8 @@ describe('Job Test Suite', function() {
       Job.remove()
         .exec(function() {
           Job.create([
-            { phone: "123-456-789", station: "powl", destination: "rich", direction: "n" },
-            { phone: "123-456-789", station: "powl", destination: "rich", direction: "n" }
+            { phone: "123-456-789", station: "powl", direction: "n" },
+            { phone: "123-456-789", station: "powl", direction: "n" }
           ])
             .then(function() {
               done();
@@ -76,7 +76,7 @@ describe('Job Test Suite', function() {
   describe('GET: /jobs/:job_id & POST: /jobs/:job_id', function() {
     var job_id = null;
     beforeEach(function(done) {
-      Job.create({ phone: "123-456-789", station: "powl", destination: "rich", direction: "n" })
+      Job.create({ phone: "123-456-789", station: "powl", direction: "n" })
         .then(function(job) {
           job_id = job._id;
           done();
@@ -90,7 +90,6 @@ describe('Job Test Suite', function() {
         .end(function(err, res) {
           expect(res.body.phone).to.be.equal("123-456-789");
           expect(res.body.station).to.be.equal("powl");
-          expect(res.body.destination).to.be.equal("rich");
           expect(res.body.direction).to.be.equal("n");
           done();
         });
@@ -99,12 +98,11 @@ describe('Job Test Suite', function() {
     it('POST: /jobs/:job_id should update the existing job', function(done) {
       request(app)
         .post('/jobs/' + job_id)
-        .send({ phone: "456-789-123", station: "glen", destination: "sfia" })
+        .send({ phone: "456-789-123", station: "glen" })
         .expect(200)
         .end(function(err, res) {
           expect(res.body.phone).to.be.equal("456-789-123");
           expect(res.body.station).to.be.equal("glen");
-          expect(res.body.destination).to.be.equal("sfia");
           expect(res.body.direction).to.be.equal("n");
           done();
         });
@@ -112,7 +110,7 @@ describe('Job Test Suite', function() {
   });
 
   it('DELETE: /jobs/job_id should delete a specified job', function(done) {
-    Job.create({ phone: "123-456-789", station: "powl", destination: "rich", direction: "n" })
+    Job.create({ phone: "123-456-789", station: "powl", direction: "n" })
       .then(function(res) {
 
         request(app)
