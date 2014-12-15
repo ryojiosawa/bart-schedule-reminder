@@ -7,9 +7,9 @@ var fetchJobs = require('./jobs/job-controller').fetchJobs;
 fetchJobs()
   .then(function(jobs) {
     async.each(jobs, function(job, done) {
-      bart.fetchDeparatureEstimates(job.station, job.direction, job.destination)
+      bart.fetchDeparatureEstimates(job.station, job.direction)
         .then(function(estimates) {
-          console.log('estimates', estimates);
+          //console.log('estimates', estimates);
 
           twilio.sendText(job, estimates)
             .then(function(message) {
