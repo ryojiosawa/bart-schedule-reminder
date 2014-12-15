@@ -2,17 +2,19 @@ var accountSid = process.env.TWILIO_ACCOUNT_ID;
 var authToken = process.env.AUTH_TOKEN;
 var from = process.env.PHONE;
 var helper = require('./helper');
+var _ = require('underscore');
 
-//require the Twilio module and create a REST client
 var client = require('twilio')(accountSid, authToken);
 
-exports.sendText = function(job, minutes) {
+exports.sendText = function(job, estimates) {
+  var body = 'Upcoming departures at ' + helper.getStationName(job.station) + ' \n';
 
-  var body = 'Your train (' + helper.getStationName(job.destination) + ') ' +
-        'is arriving at ' + helper.getStationName(job.station) +
-        ' station in ' +
-        minutes.join(', ') + ' minutes.';
+  _.each(estimates, function(estimate) {
+    var minutes = _.map(estimate.estimate, function(estimates) {
+      return estimates.minutes[0] === 'Leaving' ? 'now': estimates.minutes[0];
+    });
+    body += estimate.destination[0] + 'in (' + minutes.join(', ') + ' ) mins\n';
+  });
 
-  var message = { to: job.phone, from: from, body: body };
-  return client.messages.create(message)
+  return client.messages.create({ to: job.phone, from: from, body: body });
 };
