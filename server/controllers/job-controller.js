@@ -1,4 +1,4 @@
-var Job = require('./job-model');
+var Job = require('./../models/job-model');
 
 module.exports = {
   createJob: function(req, res, next) {

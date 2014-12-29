@@ -2,7 +2,7 @@ var db = require('./db-config'); // this is needed in order for worker to access
 var async = require('async');
 var bart = require('./lib/bart');
 var twilio = require('./lib/twilio');
-var fetchJobs = require('./jobs/job-controller').fetchJobs;
+var fetchJobs = require('./controllers/job-controller').fetchJobs;
 
 fetchJobs()
   .then(function(jobs) {
