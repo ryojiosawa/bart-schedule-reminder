@@ -3,8 +3,8 @@ var expect = require('expect.js');
 var request = require('supertest');
 var app = require('../../server');
 var helper = require('../../server/lib/helper');
-var Job = require('../../server/jobs/job-model');
-var jobController = require('../../server/jobs/job-controller');
+var Job = require('../../server/models/job-model');
+var jobController = require('../../server/controllers/job-controller');
 
 describe('Route Test Suites', function() {
 

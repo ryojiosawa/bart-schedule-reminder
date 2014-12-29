@@ -2,7 +2,7 @@ var db = require('../../server/db-config.js');
 var request = require('supertest');
 var expect = require('chai').expect;
 var app = require('../../server.js');
-var Job = require('../../server/jobs/job-model');
+var Job = require('../../server/models/job-model');
 
 describe('Job Test Suite', function() {
 

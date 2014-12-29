@@ -18,6 +18,6 @@ module.exports = function (app, express) {
   app.use(helper.errorHandler);
 
   var jobRouter = express.Router();
-  require('./jobs/job-routes.js')(jobRouter);
+  require('./routes/job-routes.js')(jobRouter);
   app.use('/jobs', jobRouter);
 };
