@@ -1,5 +1,4 @@
 var handler = require('./../controllers/job-controller');
-var helper = require('../lib/helper');
 
 module.exports = function (app) {
   app.route('/:id')
